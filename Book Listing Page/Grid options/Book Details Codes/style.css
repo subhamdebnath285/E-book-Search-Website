@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.image {
+    margin-right: 40px;
+}
+
+.content {
+    max-width: 600px;
+}
+
+.price {
+    color: #B12704;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+    margin-left: 10px;
+}
+
+.save {
+    color: #B12704;
+    font-size: 18px;
+}
+
+.select,
+.button {
+    margin: 10px 0;
+}
+
+.button {
+    display: flex;
+    gap: 10px;
+}
+
+.button button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.button button.add-to-cart {
+    background-color: #FF9900;
+    border: none;
+    color: white;
+}
+
+.button button.send-it {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.tab {
+    display: flex;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.tab:first-child {
+    border-top: 1px solid #ccc;
+}
+
+.tab-label {
+    background-color: #b8860b;
+    padding: 15px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.tab-label.active {
+    background-color: #000;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.related-books {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.related-books h2 {
+    margin-bottom: 20px;
+}
+
+.book-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book {
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.book img {
+    max-width: 100%;
+    height: auto;
+}
+
+.book-title {
+    margin-top: 10px;
+}
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.related-videos {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.related-videos h2 {
+    margin-bottom: 20px;
+}
+.video-list {
+    display: flex;
+    justify-content: space-between;
+}
+.video {
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+.video iframe {
+    width: 100%;
+    height: 200px;
+}
+.video-title {
+    margin-top: 10px;
+}

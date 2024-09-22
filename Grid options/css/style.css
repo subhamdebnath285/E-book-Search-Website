@@ -1,0 +1,619 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+  }
+  
+  strong {
+    font-weight: 900;
+  }
+  
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 30px 30px 0;
+    text-align: right;
+  }
+  
+  .menu-trigger {
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #fff;
+    cursor: pointer;
+    position: relative;
+  }
+  .menu-trigger:focus, .menu-trigger:active {
+    outline: 0;
+  }
+  .menu-trigger__line {
+    position: absolute;
+    left: 4px;
+    width: 30px;
+    height: 2px;
+    background-color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+  .menu-trigger__line:nth-child(1) {
+    top: 9px;
+  }
+  .menu-trigger__line:nth-child(2) {
+    top: 18px;
+  }
+  .menu-trigger__line:nth-child(3) {
+    bottom: 9px;
+  }
+  .menu-trigger:hover .menu-trigger__line:nth-child(1) {
+    top: 7px;
+  }
+  .menu-trigger:hover .menu-trigger__line:nth-child(3) {
+    bottom: 7px;
+  }
+  
+  .navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 40px);
+    background-color: #282828;
+    z-index: 9;
+    color: #fff;
+    visibility: hidden;
+    transform: translate3d(0, -100%, 0);
+    transition: 0.4s ease-in-out;
+    transition-delay: 0.3s;
+    min-height: 450px;
+  }
+  .navigation__inner {
+    max-width: 650px;
+    margin: 120px auto 0;
+  }
+  .navigation__info {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto 30px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transform: translate3d(-25px, 0, 0);
+    visibility: hidden;
+    transition: 0.4s ease-in-out;
+    transition-delay: 0s;
+  }
+  @media screen and (min-width: 760px) {
+    .navigation__inner {
+      display: flex;
+    }
+    .navigation__info {
+      width: calc(50% - 75px);
+      margin: 0 75px 0 0;
+    }
+  }
+  
+  .menu {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 400;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(25px, 0, 0);
+    transition: 0.4s ease-in-out;
+    transition-delay: 0s;
+  }
+  .menu ul {
+    list-style: none;
+    counter-reset: menu;
+    margin: 0;
+    padding: 0;
+  }
+  .menu li {
+    position: relative;
+    margin: 15px 0 30px;
+  }
+  .menu li:last-child {
+    margin-bottom: 0;
+  }
+  .menu li::before {
+    counter-increment: menu;
+    content: counter(menu, decimal-leading-zero);
+    position: absolute;
+    top: -20px;
+    left: -35px;
+    opacity: 0.15;
+    font-size: 42px;
+    font-weight: 300;
+  }
+  .menu li a {
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    line-height: 1;
+  }
+  .menu li a::after {
+    content: "";
+    position: absolute;
+    left: 108%;
+    top: 3px;
+    width: 0;
+    height: 20px;
+    background-color: #F6001E;
+    transform: skew(-20deg);
+    transition: 0.2s ease-in-out;
+  }
+  .menu li a:hover::after {
+    width: 8px;
+  }
+  .menu li.current a {
+    font-weight: bold;
+  }
+  .menu li.current a::after {
+    width: 8px;
+  }
+  @media screen and (min-width: 760px) {
+    .menu {
+      width: 50%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  
+  .hero {
+    height: calc(100vh - 40px);
+    min-height: 400px;
+    width: 100%;
+    background: url(https://source.unsplash.com/3fX0FvA-2us/1600x900) no-repeat top center #282828;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(40, 40, 40, 0.7);
+  }
+  .hero__caption {
+    position: relative;
+    max-width: 80%;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.5;
+    letter-spacing: 5px;
+  }
+  .hero__caption h2 {
+    font-weight: 300;
+    font-size: 30px;
+  }
+  @media screen and (min-width: 760px) {
+    .hero__caption h2 {
+      font-size: 48px;
+    }
+  }
+  
+  .is-navigation-open .menu-trigger__line {
+    background-color: #F6001E;
+  }
+  .is-navigation-open .menu-trigger__line:nth-child(1) {
+    transform: rotate(-45deg);
+    top: 18px !important;
+  }
+  .is-navigation-open .menu-trigger__line:nth-child(2) {
+    transform: scale(0);
+  }
+  .is-navigation-open .menu-trigger__line:nth-child(3) {
+    transform: rotate(45deg);
+    bottom: 18px !important;
+  }
+  .is-navigation-open .navigation {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0s;
+  }
+  .is-navigation-open .navigation__info {
+    opacity: 1;
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0.3s;
+  }
+  .is-navigation-open .menu {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    transition-delay: 0.3s;
+  }
+  
+  .mask-polygon-1 {
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 82.8%, 37.2% 100%, 0 77.2%);
+            clip-path: polygon(0 0, 100% 0, 100% 82.8%, 37.2% 100%, 0 77.2%);
+  }
+
+
+  /*.menu{
+    margin-right: 100px;
+    background-repeat: no-repeat;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE3OhJ-Z-59sZReGTVDObYj2F5v0virb_7nQ&s) ;
+  }*/
+  
+  
+  /*Navigation Banner End */
+
+
+  /*header Benner*/
+
+  
+/* Fixed width layout Starts */
+
+/* Constrains the height while maintaing full width while centering the page's content. */
+
+#wrapper {
+  margin: 0 auto;
+  width: 100%;
+}
+/*Bibles Banner start*/
+h3 {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  background: white url('https://thumbs.dreamstime.com/z/hinduism-concept-banner-header-indian-family-traditional-clothes-reading-hindu-texts-tiny-people-vedas-books-knowledge-182539726.jpg') no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  /* The two lines below make the photo opaque. No Apacity = 1  Full Opacity = 0  :-) */
+  opacity: 0.6;
+  line-height: 2.8em;
+}
+/*Bibles Banner end*/
+/*Fiction Banner start*/
+h4 {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  background: white url('https://www.teachersclubhouse.com/images/sampleimages/Fiction_Banner.jpg') no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  /* The two lines below make the photo opaque. No Apacity = 1  Full Opacity = 0  :-) */
+  opacity: 0.6;
+  line-height: 2.8em;
+}
+/*Fiction Banner start*/
+/*KIDS Banner start*/
+h5 {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  background: white url('https://www.sparklebox.co.uk/wp-content/uploads/1-2327.jpg') no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  /* The two lines below make the photo opaque. No Apacity = 1  Full Opacity = 0  :-) */
+  opacity: 0.6;
+  line-height: 2.8em;
+}
+/*KIDS Banner start*/
+/*NON-FICTION Banner start*/
+h6 {
+  height: 180px;
+  width: 100%;
+  overflow: hidden;
+  background: white url('https://www.hudsonbooksellers.com/sites/hudsonbooksellers.com/files/ch-nonfiction-banner.png') no-repeat center center;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  /* The two lines below make the photo opaque. No Apacity = 1  Full Opacity = 0  :-) */
+  opacity: 0.6;
+  line-height: 2.8em;
+}
+/*KIDS Banner start*/
+
+h1 {
+  margin-top: 1em;
+  font-family: Arial, San-serif;
+  font-size: 70px;
+  Text-align: center;
+  color: limegreen;
+  width: 100%;  
+}
+
+
+/*  filter: alpha(opacity=60); */
+
+
+:root {
+  --columns: 3;
+  --yellow: rgba(238, 188, 31, 1);
+  --pink: rgba(255, 82, 145, 1);
+  --blue: rgba(64, 98, 187, 1);
+  --green: rgba(6, 141, 126, 1);
+  --white: rgba(248, 255, 229, 1);
+}
+
+body{
+  background-color: #182028;
+}
+
+dl{
+  display:grid;
+  grid-template-columns: repeat(var(--columns),1fr);
+  margin: 200px -40px;
+}
+
+ol{
+  grid-column-end: span 2;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  margin-top: -50%;
+}
+
+ol:nth-child(2n){
+  grid-column-start:2;
+}
+
+ol::before, ol::after {
+  content:'';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: 50% 100%,100% 100%;
+  background-position: left, right;
+}
+
+ol::before{
+  z-index: -10;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  -webkit-clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  background-repeat: no-repeat;
+  background-image: 
+    linear-gradient(-45deg,var(--yellow) 53.5%,var(--green) 53.5%,var(--green) 60%,var(--yellow) 60%), 
+    linear-gradient(45deg,var(--yellow) 65.3%,var(--green) 65.3%,var(--green) 69.9%,var(--yellow) 69.9%);
+}
+
+ol::after{
+  clip-path: polygon(100% 50%, 50% 100%, 0 50%, 20% 50%, 50% 80%,80% 50%);
+  -webkit-clip-path: polygon(100% 50%, 50% 100%, 0 50%, 20% 50%, 50% 80%,80% 50%);
+  background-repeat: no-repeat;
+  background-image: linear-gradient(45deg,var(--yellow) 40%,var(--green) 40%), linear-gradient(-45deg,var(--yellow) 30%,var(--green) 30%);
+}
+
+ol:nth-child(2n)::before{
+  background-image: linear-gradient(-45deg,var(--pink) 53.5%,var(--blue) 53.5%,var(--blue) 60%,var(--pink) 60%), linear-gradient(45deg,var(--pink) 65.3%,var(--blue) 65.3%,var(--blue) 69.9%,var(--pink) 69.9%);
+}
+
+ol:nth-child(2n)::after{
+  background-image: linear-gradient(45deg,var(--pink) 40%,var(--blue) 40%), linear-gradient(-45deg,var(--pink) 30%,var(--blue) 30%);
+}
+
+ol:nth-child(5n)::before{
+  background-image: linear-gradient(-45deg,var(--green) 53.5%,var(--pink) 53.5%,var(--pink) 60%,var(--green) 60%), linear-gradient(45deg,var(--green) 65.3%,var(--pink) 65.3%,var(--pink) 69.9%,var(--green) 69.9%);
+}
+
+ol:nth-child(5n)::after{
+  background-image: linear-gradient(45deg,var(--green) 40%,var(--pink) 40%), linear-gradient(-45deg,var(--green) 30%,var(--pink) 30%);
+}
+
+ol:nth-child(7n)::before,ol:nth-child(7n-4)::before{
+  background-image: linear-gradient(-45deg,var(--blue) 53.5%,var(--white) 53.5%,var(--white) 60%,var(--blue) 60%), linear-gradient(45deg,var(--blue) 65.3%,var(--white) 65.3%,var(--white) 69.9%,var(--blue) 69.9%);
+}
+
+ol:nth-child(7n)::after,ol:nth-child(7n-4)::after{
+  background-image: linear-gradient(45deg,var(--blue) 40%,var(--white) 40%), linear-gradient(-45deg,var(--blue) 30%,var(--white) 30%);
+}
+
+ol:nth-child(9n)::before,ol:nth-child(9n-5)::before{
+  background-image: linear-gradient(-45deg,var(--white) 53.5%,var(--green) 53.5%,var(--green) 60%,var(--white) 60%), linear-gradient(45deg,var(--white) 65.3%,var(--green) 65.3%,var(--green) 69.9%,var(--white) 69.9%);
+}
+
+ol:nth-child(9n)::after,ol:nth-child(9n-5)::after{
+  background-image: linear-gradient(45deg,var(--white) 40%,var(--green) 40%), linear-gradient(-45deg,var(--white) 30%,var(--green) 30%);
+}
+
+
+
+img{
+  position: absolute;
+  width: 43%;
+  left: 60%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-60%);
+  box-shadow: 5px -5px 10px rgba(0, 0, 0, 0.3);
+  transition-property: transform;
+  transition-duration: .3s;
+}
+
+img:hover{
+  transform: translateX(-40%) translateY(-70%) rotatez(25deg);
+}
+@media (min-width:450px){
+  dl{
+    margin: 190px 40px;
+  }
+}
+@media (min-width:600px){
+  :root {
+    --columns: 5;
+  }
+  ol:nth-child(2n){
+    grid-column-start:auto;
+  }
+  ol:nth-child(4n-1){
+    grid-column-start:2;
+  }
+}
+@media (min-width:900px){
+  :root {
+    --columns: 7;
+  }
+  ol:nth-child(4n-1){
+    grid-column-start:auto;
+  }
+  ol:nth-child(6n-2){
+    grid-column-start:2;
+  }
+}
+@media (min-width:1200px){
+  :root {
+    --columns: 9;
+  }
+  ol:nth-child(6n-2){
+    grid-column-start:auto;
+  }
+  ol:nth-child(8n-3){
+    grid-column-start:2;
+  }
+}
+@media (min-width:1500px){
+  :root {
+    --columns: 11;
+  }
+  ol:nth-child(8n-3){
+    grid-column-start:auto;
+  }
+  ol:nth-child(10n-4){
+    grid-column-start:2;
+  }
+}
+@media (min-width:1800px){
+  :root {
+    --columns: 13;
+  }
+  ol:nth-child(10n-4){
+    grid-column-start:auto;
+  }
+  ol:nth-child(12n-5){
+    grid-column-start:2;
+  }
+}
+@media (min-width:2100px){
+  :root {
+    --columns: 15;
+  }
+  ol:nth-child(12n-5){
+    grid-column-start:auto;
+  }
+  ol:nth-child(14n-6){
+    grid-column-start:2;
+  }
+}
+
+
+
+/*view button start
+/* Included color classes.. 
+	.red 
+	.blue 
+	.orange 
+	.green
+	.navy
+*/
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800);
+ol.snip1170 {
+  font-family: 'Raleway', Arial, sans-serif;
+  color: #fff;
+  position: relative;
+  margin: 10px;
+  min-width: 210px;
+  max-width: 300px;
+  width: 100%;
+  color: #000000;
+  text-align: left;
+}
+ol.snip1170 * {
+  -webkit-box-sizing: padding-box;
+  box-sizing: padding-box;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+ol.snip1170 img {
+  opacity: 1;
+  max-width: 100%;
+  vertical-align: top;
+}
+ol.snip1170 span {
+  position: absolute;
+  padding: 0 10px 0 10px;
+  color: #ffffff;
+  background-color: #000000;
+  font-weight: 800;
+  font-size: 0.9em;
+  line-height: 36px;
+  text-transform: uppercase;
+  bottom: 50px;
+  left: 150px;
+  z-index: 1;
+}
+ol.snip1170 span:after {
+  border-bottom: 18px solid transparent;
+  border-left: 12px solid #000000;
+  border-top: 18px solid transparent;
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 0;
+}
+ol.snip1170 ol {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 1;
+}
+ol.snip1170.blue span {
+  background-color: #20638f;
+}
+ol.snip1170.blue span:after {
+  border-color: transparent transparent transparent #20638f;
+}
+ol.snip1170.red span {
+  background-color: #962d22;
+}
+ol.snip1170.red span:after {
+  border-color: transparent transparent transparent #962d22;
+}
+ol.snip1170.green span {
+  background-color: #1e8449;
+}
+ol.snip1170.green span:after {
+  border-color: transparent transparent transparent #1e8449;
+}
+ol.snip1170.orange span {
+  background-color: #bf6516;
+}
+ol.snip1170.orange span:after {
+  border-color: transparent transparent transparent #bf6516;
+}
+ol.snip1170.navy span {
+  background-color: #222f3d;
+}
+ol.snip1170.navy span:after {
+  border-color: transparent transparent transparent #222f3d;
+}
+ol.snip1170:hover img,
+ol.snip1170.hover img {
+  opacity: 0.3;
+}
+ol.snip1170:hover span,
+ol.snip1170.hover span {
+  -webkit-transform: translateY(-15px);
+  transform: translateY(-15px);
+}
